@@ -48,6 +48,28 @@ If you set the `sourceMap` option to `true` then the generated source map will b
 
 All TypeScript compiler options are defined [here](https://github.com/Microsoft/TypeScript/blob/0f67f4b6f1589756906782f1ac02e6931e1cff13/lib/typescript.d.ts#L1445-L1500).
 
+If you would like to use an existing tsconfig file instead of specifying the options inline, you can use the project option:
+
+```js
+// karma.conf.js
+module.exports = function(config) {
+  config.set({
+    preprocessors: {
+      '**/*.ts': ['typescript']
+    },
+
+    typescriptPreprocessor: {
+      // options passed to the typescript compiler
+      options: {
+        // relative path to tsconfig
+        project: '../../tsconfig.json'
+      }
+    }
+  });
+};
+```
+
+
 ----
 
 For more information on Karma see the [homepage](http://karma-runner.github.com).
